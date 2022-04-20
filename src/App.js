@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {get_star,get_icon,get_random_css} from './lib/fs';
 import Sliderz from './components/slider';
+import Accordion from 'react-bootstrap/Accordion'
 const items=[
      {
        img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
@@ -8,7 +9,8 @@ const items=[
          id:"GA01",
          price_from:1300000,
          price_to:0,
-         message:''
+         message:'',
+         product_attributes:'Giường sắt màu xanh dương'
        },
      },
      {
@@ -17,7 +19,8 @@ const items=[
          id:"GB01",
          price_from:0,
          price_to:0,
-         message:'Giá tùy theo kích thước'
+         message:'Giá tùy theo kích thước',
+         product_attributes:'Giường sắt màu hồng'
        },
      },
      {
@@ -26,7 +29,8 @@ const items=[
          id:"HG01",
          price_from:0,
          price_to:3500000,
-         message:'Miễn phí vận chuyển'
+         message:'Miễn phí vận chuyển',
+         product_attributes:'Giường sắt màu trắng-xanh dương'
        },
      },
      {
@@ -35,7 +39,8 @@ const items=[
          id:"GC01",
          price_from:2300000,
          price_to:3500000,
-         message:'Giá tùy theo kích thước'
+         message:'Giá tùy theo kích thước',
+         product_attributes:'Giường sắt màu nâu'
        },
      },
    ];
@@ -69,7 +74,7 @@ class App extends Component {
                                         <div className="danh-gia">
                                              <span>Đánh giá  :</span>
                                              {get_star(2.5)}
-                                             <span class={`ribbon ${get_random_css()}`}>Mẫu số 1</span>
+                                             <span className={`ribbon ${get_random_css()}`}>Mẫu số 1</span>
                                         </div>
                                         <Sliderz items={items}/>
                                         <div className='xem-sp'>
@@ -82,103 +87,212 @@ class App extends Component {
                                                   </a>
                                              </p>
                                         </div>
-                                       <div>
-                                             <h3 style={{fontSize: '19px',marginTop: '15px'}}>
-                                                 * Thông tin sản phẩm
-                                             </h3>
-                                             <div className='table-x'>
-                                                  <table className='table-z1' border='1'>
-                                                       <tbody>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Giá Giường sắt giá rẻ</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-8'>
-                                                                 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                            </tr>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Chất liệu</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-8'>
-                                                                  + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                            </tr>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Kích thước hỗ trợ</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-8'>
-                                                                 🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                            </tr>
-                                                       </tbody>
-                                                  </table>
-                                             </div>
-                                             <div>
-                                                  <span className='thong-tin'>Thông tin về chúng tôi 👉 <a href="#thong-tin">Nội thất An bình</a></span>
-                                             </div>
-                                       </div>
-                                       <div>
-                                             <h3 style={{fontSize: '19px',marginTop: '15px'}}>
-                                                 * Thông tin sản phẩm
-                                             </h3>
-                                             <div className='table-x'>
-                                                  <table className='table-z1' border='1'>
-                                                       <tbody>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Giá</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-7'>
-                                                                 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                                 <td className='td-z2 f-1'>
-                                                                  <button class="btn btn-danger">Mua</button>
-                                                                 </td>
-                                                            </tr>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Chất liệu</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-7'>
-                                                                  + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                                 <td className='td-z2 f-1'>
-                                                                  <button  class="btn btn-danger">Mua</button>
-                                                                 </td>
-                                                            </tr>
-                                                            <tr className='tr-z1'>
-                                                                 <td className='td-z1 f-2'>
-                                                                     <strong> Kích thước hỗ trợ</strong>
-                                                                 </td>
-                                                                 <td className='td-z2 f-7'>
-                                                                 🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
-                                                                 </td>
-                                                                 <td className='td-z2 f-1'>
-                                                                  <button class="btn btn-danger">Mua</button>
-                                                                 </td>
-                                                            </tr>
-                                                       </tbody>
-                                                  </table>
-                                             </div>
-                                       </div>
+                                        <Accordion >
+                                             <Accordion.Item eventKey="0">
+                                                  <Accordion.Header> <a>* Thông tin sản phẩm</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <div className='table-x'>
+                                                            <table className='table-z1' border='1'>
+                                                                 <tbody>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Giá Giường sắt giá rẻ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Chất liệu</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Kích thước hỗ trợ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                 </tbody>
+                                                            </table>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                             <Accordion.Item eventKey="1">
+                                                  <Accordion.Header><a>* Bảng giá sản phẩm</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <div className='table-x'>
+                                                            <table className='table-z1' border='1'>
+                                                                 <tbody>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Giá</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Chất liệu</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button  className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Kích thước hỗ trợ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                 </tbody>
+                                                            </table>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                             <Accordion.Item eventKey="2">
+                                                  <Accordion.Header><a>* Thanh toán</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <p>🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).</p>
+                                                       <div>
+                                                            <span className='thong-tin'>Thông tin về chúng tôi 👉 <a href="#thong-tin">Nội thất An bình</a></span>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                        </Accordion>
                                    </div>
                               </div>
                               <div className='col-12 col-sm-6 col-md-12 col-lg-6'>
-                                   <div className='wrap-card card-1' style={{backgroundColor: '#f50c0c59'}}>
+                              <div className='wrap-card card-1' style={{backgroundColor: '#1598496b'}}>
                                         <div className="tieu-de">
                                              <h2 className='title-1'>
                                                   Giường sắt giá rẻ 8 tấc, 80cm, 1m, 1m2, 1m4, 1m6 1m8 x dài 2m 
                                              </h2>
                                         </div>
                                         <div className="danh-gia">
-                                             <span>Đánh giá :</span>
-                                             {get_star(4)}
-                                             <span class={`ribbon ${get_random_css()}`}>Mẫu số 1</span>
+                                             <span>Đánh giá  :</span>
+                                             {get_star(2.5)}
+                                             <span className={`ribbon ${get_random_css()}`}>Mẫu số 1</span>
                                         </div>
-                                        <Sliderz  items={items}/>
+                                        <Sliderz items={items}/>
+                                        <div className='xem-sp'>
+                                             <p>
+                                                  <a className="button1" href='tel:0963226771' target="_blank">
+                                                       <span>
+                                                       {get_icon('phone','25px')}
+                                                       Liên hệ
+                                                       </span>
+                                                  </a>
+                                             </p>
+                                        </div>
+                                         <Accordion >
+                                             <Accordion.Item eventKey="0">
+                                                  <Accordion.Header> <a>* Thông tin sản phẩm</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <div className='table-x'>
+                                                            <table className='table-z1' border='1'>
+                                                                 <tbody>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Giá Giường sắt giá rẻ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Chất liệu</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Kích thước hỗ trợ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-8'>
+                                                                           🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                      </tr>
+                                                                 </tbody>
+                                                            </table>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                             <Accordion.Item eventKey="1">
+                                                  <Accordion.Header><a>* Bảng giá sản phẩm</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <div className='table-x'>
+                                                            <table className='table-z1' border='1'>
+                                                                 <tbody>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Giá</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Chất liệu</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button  className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                      <tr className='tr-z1'>
+                                                                           <td className='td-z1 f-2'>
+                                                                           <strong> Kích thước hỗ trợ</strong>
+                                                                           </td>
+                                                                           <td className='td-z2 f-7'>
+                                                                           🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).
+                                                                           </td>
+                                                                           <td className='td-z2 f-1'>
+                                                                           <button className="btn btn-danger">Mua</button>
+                                                                           </td>
+                                                                      </tr>
+                                                                 </tbody>
+                                                            </table>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                             <Accordion.Item eventKey="2">
+                                                  <Accordion.Header><a>* Thanh toán</a></Accordion.Header>
+                                                  <Accordion.Body>
+                                                       <p>🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).</p>
+                                                       <div>
+                                                            <span className='thong-tin'>Thông tin về chúng tôi 👉 <a href="#thong-tin">Nội thất An bình</a></span>
+                                                       </div>
+                                                  </Accordion.Body>
+                                             </Accordion.Item>
+                                        </Accordion>
+                                       {/*  */}
                                    </div>
                               </div>
                          </div>
