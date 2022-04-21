@@ -203,3 +203,99 @@
 .f-1{
  width: 10%;
 }
+.header-modalz{
+  background: #d93e21;
+  height: 42px;
+  line-height: 42px;
+  padding-left: 20px;
+  padding-right: 40px;
+  font-size: 16px;
+  text-transform: uppercase;
+  color: #fff;
+  position: relative;
+}
+.titlez{
+  display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.devvn-popup-close {
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  min-height: inherit;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+}
+.devvn-popup-close:hover   {
+  color: blue !important;
+}
+.wrapz .modal-content{
+  background-color: #f8f9fa;
+}
+.prz{
+  font-size: 12px;
+  color: #d50000;
+  font-weight: 700;
+  /* text-align: center; */
+}
+.devvn_prod_variable {
+  margin: 0px 0px 10px 20px;
+}
+.quantity {
+  position: relative;
+  opacity: 1;
+  display: inline-block;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  white-space: nowrap;
+  vertical-align: top;
+  border: 1px solid #b7b7b7;
+  padding: 2px 2px;
+}
+.syx {
+  font-size: 19px;
+  padding: 0px 11px;
+  cursor: pointer;
+}
+.syx:hover {
+  background-color: #eae1e1;
+}
+#quantity-one{
+  font-size: 18px;
+  padding: 3px 1px;
+}
+.war{
+  padding: 5px 0px 0px 6px;
+}
+.btnz{
+  cursor: pointer;
+    margin: 8px 10px 0px 0px;
+    padding: 8px;
+    color: rgb(36, 36, 36);
+    font-size: 13px;
+    min-width: 80px;
+    position: relative;
+    background-color: rgb(225 223 223);
+    border: 1px solid transparent;
+    outline: 0px;
+    border-radius: 4px;
+}
+.wabz p{
+  margin-bottom: 0px;
+}
+.z-active, .wabz button:hover{
+  border: 1px solid rgb(13, 92, 182);
+  background-color: rgb(229, 242, 255);
+}
+.z-active .selected-indicator, .wabz button:hover .selected-indicator{
+  display: block;
+}
+.selected-indicator{
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  display: none;
+}

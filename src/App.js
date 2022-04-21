@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {get_star,get_icon,get_random_css} from './lib/fs';
 import Sliderz from './components/slider';
-import Accordion from 'react-bootstrap/Accordion'
+import Accordion from 'react-bootstrap/Accordion';
+import Modal_checkout from './components/Modal_checkout';
 const items=[
      {
        img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
@@ -55,9 +56,11 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
+         show:true
     }
   }
   render() {
+          let {show}=this.state;
     return (
       <React.Fragment> xxx
                <div className='row mg-0'>
@@ -299,9 +302,14 @@ class App extends Component {
                     </div>
                     <div id="thong-tin" className='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-3 col-xxl-4'>3</div>
                </div>
+               <Modal_checkout
+                    show={show}
+                    handleClose={()=>this.setState({show:false})}
+               />
       </React.Fragment>
     );
   }
+
 }
 
 export default App;
