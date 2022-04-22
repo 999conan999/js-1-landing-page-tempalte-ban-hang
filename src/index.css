@@ -429,3 +429,23 @@
   border: solid 1px cadetblue;
   cursor: pointer;
 }
+.cfir{
+  text-align: center;
+  padding: 3px 0px;
+  background-color: #6d6d6d;
+  color: white;
+  margin-bottom: 8px;
+}
+.menuz{
+  position: absolute;
+  top: 54px;
+}
+.centerz{
+  text-align: center;
+}
+.bottom-header{
+  background-color: #ed1b24;
+  margin-top: 5px;
+  margin-bottom: 35px;
+  height: 39px;
+}

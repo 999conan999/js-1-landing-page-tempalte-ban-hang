@@ -4,6 +4,8 @@ import Sliderz from './components/slider';
 import Accordion from 'react-bootstrap/Accordion';
 import Modal_checkout from './components/Modal_checkout';
 import Modal_status from './components/Modal_status';
+import HeaderZ from './components/HeaderZ';
+import FooterZ from './components/FooterZ';
 import facebook from './lib/facebook.png'
 import zalo from './lib/zalo.png'
 import call from './lib/call.png'
@@ -69,8 +71,9 @@ class App extends Component {
           let {show_checkout,show_modal_status}=this.state;
     return (
       <React.Fragment>
+               <HeaderZ/>
                <div className='row mg-0'>
-                    <div className='col-12 col-xl-12 col-xxl-1'>1</div>
+                    <div className='col-12 col-xl-12 col-xxl-1'></div>
                     <div className='col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 col-xxl-7'>
                          <div className='row'>
                               <div className='col-12 col-sm-6 col-md-12 col-lg-6'>
@@ -325,13 +328,13 @@ class App extends Component {
                     <div id="thong-tin" className='col-12 col-sm-12 col-md-5 col-lg-4 col-xl-4 col-xxl-4'>
                          <div className='wrap-tt container'>
                               <div className='row sh'>
-                                   <div className='col-xs-12 col-sm-12 picz'>
+                                   <div className='col-12 col-sm-12 picz'>
                                         <img src="https://cdn2.tieudungplus.vn/media/uploaded/9/2016/07/05/cua_hang_tl.jpg" class="imgz img-top"/>
                                    </div>
-                                   <div className='col-xs-12 col-sm-6 picz'>
+                                   <div className='col-12 col-sm-6 picz'>
                                         <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2021/8/19/943822/Google-6.jpg?w=800&crop=auto&scale=both" class="imgz"/>
                                    </div>
-                                   <div className='col-xs-12 col-sm-6 picz'>
+                                   <div className='col-12 col-sm-6 picz'>
                                         <img src="https://media-cdn-v2.laodong.vn/storage/newsportal/2021/8/19/943822/Google-6.jpg?w=800&crop=auto&scale=both" class="imgz"/>
                                    </div>
                               </div>
@@ -394,6 +397,7 @@ class App extends Component {
                          </div>
                     </div>
                </div>
+               <FooterZ/>
                <Modal_checkout
                     show={show_checkout}
                     handleClose={()=>this.setState({show:false})}
