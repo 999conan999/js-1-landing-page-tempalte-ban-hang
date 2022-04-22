@@ -13,7 +13,7 @@ export default class Modal_checkout extends Component {
   }
   render() {
     return (
-      <React.Fragment> xxx
+      <React.Fragment>
         <Modal
           show={this.props.show}
           size="lg"
@@ -55,26 +55,7 @@ export default class Modal_checkout extends Component {
                               1m2x2m
                               <img className='selected-indicator' src={iconz}/>
                            </button>
-                           <button className='btnz'> 
-                              1m4x2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              1m6x2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              1m8x2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              80cmx2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              80cmx2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
+                       
                          </div>
                        </div>
                        <div className='wabz'>
@@ -110,68 +91,47 @@ export default class Modal_checkout extends Component {
                   </div>
                 </div>
                 <div className='col-xs-12 col-sm-12 col-lg-6'>
-                  yyyyyy
+                  <div className='row'>
+                      <div className='wapz'>
+                        <div className='popup-customer-info-title'>Thông tin người mua</div>
+                        <div className='wapzz'>
+                          <div class="popup-customer-info-group"> 
+                            <div class="popup-customer-info-item-2"> 
+                              <input id="ten" type="text" class="inp" placeholder="Họ và tên(bắt buộc)"/> 
+                            </div> 
+                            <div class="popup-customer-info-item-2"> 
+                              <input id="sdt" type="tel" class="inp" placeholder="Số điện thoại(bắt buộc)"/> 
+                            </div> 
+                          </div>
+                        </div>
+                        <div className='wapzz'>
+                          <div class="popup-customer-info-group"> 
+                            <div class="popup-customer-info-item-1"> 
+                              <textarea id="dia_chi" class="inp" placeholder="Địa chỉ(bắt buộc)" style={{ height: '72px', minHeight: 'inherit'}}></textarea> 
+                              </div>
+                          </div>
+                        </div>
+                        <div className='wapzz'>
+                          <div class="popup-customer-info-group"> 
+                            <div class="popup-customer-info-item-1"> 
+                              <textarea id="dia_chi" class="inp" placeholder="Ghi chú đơn hàng" style={{ height: '72px', minHeight: 'inherit'}}></textarea> 
+                              </div>
+                          </div>
+                        </div>
+                        <div className='wapzz'>
+                          <div class="popup-customer-info-group"> 
+                            <div class="popup-customer-info-item-1"> 
+                              <button  type="button" class="devvn-order-btn">Đặt hàng ngay</button>
+                            </div>
+                          </div>
+                        </div>
+                      {/*  */}
+                      {/*  */}
+                      </div>
+                  </div>
                 </div>
               </div>
           </div>
-
-
-
-          {/* <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-              Đặt hàng
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <div className='row'>
-            <div className='col-xs-12 col-sm-12 col-md-4 col-lg-4'>
-              <img src="https://anbinhnew.com/wp-content/uploads/2021/01/Ban-hoc-doi-bang-nhua-cho-be-trai-va-gai-1.jpg" class="img-thumbnail"/>
-            </div>
-          </div>
-          <Form className='card p-2 '>
-            <Form.Text className="text-muted">
-            </Form.Text>
-            <div className='row'>
-              <div className='col-xs-12 col-sm-12 col-md-4 col-lg-6'>
-                <Form.Group className="mb-3">
-                  <Form.Label>Họ và tên:</Form.Label>
-                  <Form.Control type="text" />
-                  <Form.Text className="text-muted">
-                  </Form.Text>
-                </Form.Group>
-                </div>
-              <div className='col-xs-12 col-sm-12 col-md-4 col-lg-6'>
-                <Form.Group className="mb-3">
-                  <Form.Label >Số điện thoại:</Form.Label>
-                  <Form.Control type="number"   />
-                  <Form.Text className="text-muted" >
-                  </Form.Text>
-                </Form.Group>
-              </div>
-              <Form.Group className="mb-3">
-                <Form.Label>Địa chỉ:</Form.Label>
-                <Form.Control type="text" />
-                <Form.Text className="text-muted">
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group className="mb-3">
-                <Form.Label >Lời nhắn:</Form.Label>
-                <Form.Control as="textarea" rows={3} />
-                <Form.Text className="text-muted" >
-                </Form.Text>
-              </Form.Group>
-            </div>
-
-          </Form>
-
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={this.props.handleClose}>
-              Close
-            </Button>
-            <Button variant="primary">Understood</Button>
-          </Modal.Footer> */}
         </Modal>
       </React.Fragment>
     );
