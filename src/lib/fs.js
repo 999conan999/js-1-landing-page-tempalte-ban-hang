@@ -65,4 +65,7 @@ export function get_icon(name,size=16,color='slategray'){
 export function get_random_css () {
     let list=['c1','c2','c3','c4','c5','c6']
     return list[Math.floor((Math.random()*list.length))];
+}
+export function validate_phone(number) {
+    return /(((\+|)84)|0)(3|5|7|8|9)+([0-9]{8})\b/.test(number);
   }

@@ -460,3 +460,33 @@
   font-size: 2px;
   color: white;
 }
+.viewz{
+  height: 450px;
+}
+@media only screen and (min-width: 992px) {
+  .viewz{
+    height: 0px;
+  }
+}
+.ms-z{
+  display: block;
+  font-size: 12px;
+  margin-bottom: 4px;
+  color: red;
+}
+.wr{
+  border: 1px solid red;
+}
+.dong{
+  position: absolute;
+  top: 0px;
+  right: -55px;
+  padding: 0px 2px;
+  background-color: #919191;
+  line-height: 2;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.dong:hover{
+  background-color: #202124;
+}

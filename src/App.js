@@ -21,87 +21,21 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
-         show_checkout:true,
+         show_checkout:false,
          show_modal_status:false,
+         p:0,
          data_modal_selected:{
               value_selected:{
-                   title:'1mx2m',
-                   price:1250000
+                   title:'',
+                   price:0
               },
               sp:{
-               title:'Giường x sắt giá rẻ 8 tấc, 80cm, 1m, 1m2, 1m4, 1m6 1m8 x dài 2m',
-               danh_gia:4.5,
-               hinh_anh:[
-                 {
-                       img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
-                       id:"GA01",
-                       price_from:1300000,
-                       price_to:0,
-                       message:'',
-                       product_attributes:'Giường sắt màu xanh dương'
-                 },
-                 {
-                     img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-hop-cao-cap-don-gian.jpg",
-                     id:"GB01",
-                     price_from:0,
-                     price_to:0,
-                     message:'Giá tùy theo kích thước',
-                     product_attributes:'Giường sắt màu hồng'
-                 },
-                 {
-                     img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-hoang-gia-hcm-noi-that-an-binh-1-720x720.jpg",
-                     id:"HG01",
-                     price_from:0,
-                     price_to:3500000,
-                     message:'Miễn phí vận chuyển',
-                     product_attributes:'Giường sắt màu trắng-xanh dương'
-                 },
-                 {
-                     img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-don-1m2-mau-ngang-2.jpg",
-                     id:"GC01",
-                     price_from:2300000,
-                     price_to:3500000,
-                     message:'Giá tùy theo kích thước',
-                     product_attributes:'Giường sắt màu nâu'
-                 },
-               ],
-               thong_tin_sp:[
-                 {
-                   title:'xxxGiá Giường sắt giá rẻ',
-                   des:'+x Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-                 },
-                 {
-                   title:'xChất liệu',
-                   des:'+xcx Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-                 },
-                 {
-                   title:'Kích thước hỗ trợ',
-                   des:'🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-                 },
-               ],
-               bang_gia_sp:[
-                 {
-                   title:'1mx2m',
-                   price:1250000
-                 },
-                 {
-                   title:'1m2x2m',
-                   price:1350000
-                 },
-                 {
-                   title:'1m4x2m',
-                   price:1450000
-                 },
-                 {
-                   title:'1m6x2m',
-                   price:1550000
-                 },
-               ],
-               thanh_toan:[
-                 '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-                 '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-                 '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-               ]
+               title:'',
+               danh_gia:5,
+               hinh_anh:[],
+               thong_tin_sp:[],
+               bang_gia_sp:[],
+               thanh_toan:[]
              }
          },
     }
@@ -110,7 +44,8 @@ class App extends Component {
 
   }
   render() {
-          let {show_checkout,show_modal_status,data_modal_selected}=this.state;
+          let {show_checkout,show_modal_status,data_modal_selected,p}=this.state;
+          // console.log("🚀 ~ file: App.js ~ line 48 ~ App ~ render ~ data_modal_selected", data_modal_selected)
           let data=window.data;
     return (
       <React.Fragment>
@@ -214,8 +149,10 @@ class App extends Component {
                <FooterZ footer_title={data.comom.footer_title} />
                <Modal_checkout
                     show={show_checkout}
-                    handleClose={()=>this.setState({show:false})}
+                    handleClose={()=>this.setState({show_checkout:false})}
+                    p={p}
                     data_modal_selected={data_modal_selected}
+
                />
                <Modal_status
                     onHide={()=>this.setState({show_modal_status:false})}
@@ -296,7 +233,17 @@ class App extends Component {
                                                             {item.price.format(0, 3, '.', ',')} đ
                                                             </td>
                                                             <td className='td-z2 f-1'>
-                                                            <button  className="btn btn-danger" onClick={()=>this.setState({show_modal_status:true})}>Mua</button>
+                                                            <button  className="btn btn-danger" onClick={()=>{
+                                                                 let {p} =this.state;
+                                                                 this.setState({
+                                                                 show_checkout:true,
+                                                                 p:p+1,
+                                                                 data_modal_selected:{
+                                                                      value_selected:item,
+                                                                      sp:e
+                                                                 }
+                                                                 })
+                                                            }}>Mua</button>
                                                        </td>
                                                   </tr>
                                                   })}

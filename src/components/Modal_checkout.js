@@ -1,104 +1,100 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal'
-import {get_icon} from '../lib/fs'
+import {validate_phone} from '../lib/fs'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup';
-import iconz  from './iconz.svg'
+import iconz  from './iconz.svg';
+
 export default class Modal_checkout extends Component {
   constructor (props) {
     super(props)
+    this.myRef1 = React.createRef();
+    this.myRef2 = React.createRef();
+    this.myRef3 = React.createRef();
     this.state = {
+      validate_list:{
+        list:[true,true,true,true],
+        message:''
+      },
+      data_info:{
+        name:'',
+        phone:'',
+        address:'',
+        note:''
+      },
       selected_attributes:{
-        img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
-        product_attributes:'Giường sắt màu xanh dương'
+        img_url:"",
+        product_attributes:''
       },
       quantity:1,
       data_modal_selected:{
           value_selected:{
-              title:'1mx2m',
-              price:1250000
+              title:'',
+              price:0
           },
           sp:{
-          title:'Giường x sắt giá rẻ 8 tấc, 80cm, 1m, 1m2, 1m4, 1m6 1m8 x dài 2m',
-          danh_gia:4.5,
-          hinh_anh:[
-            {
-                  img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
-                  id:"GA01",
-                  price_from:1300000,
-                  price_to:0,
-                  message:'',
-                  product_attributes:'Giường sắt màu xanh dương'
-            },
-            {
-                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-hop-cao-cap-don-gian.jpg",
-                id:"GB01",
-                price_from:0,
-                price_to:0,
-                message:'Giá tùy theo kích thước',
-                product_attributes:'Giường sắt màu hồng'
-            },
-            {
-                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-hoang-gia-hcm-noi-that-an-binh-1-720x720.jpg",
-                id:"HG01",
-                price_from:0,
-                price_to:3500000,
-                message:'Miễn phí vận chuyển',
-                product_attributes:'Giường sắt màu trắng-xanh dương'
-            },
-            {
-                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-don-1m2-mau-ngang-2.jpg",
-                id:"GC01",
-                price_from:2300000,
-                price_to:3500000,
-                message:'Giá tùy theo kích thước',
-                product_attributes:'Giường sắt màu nâu'
-            },
-          ],
-          thong_tin_sp:[
-            {
-              title:'xxxGiá Giường sắt giá rẻ',
-              des:'+x Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-            },
-            {
-              title:'xChất liệu',
-              des:'+xcx Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-            },
-            {
-              title:'Kích thước hỗ trợ',
-              des:'🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
-            },
-          ],
-          bang_gia_sp:[
-            {
-              title:'1mx2m',
-              price:1250000
-            },
-            {
-              title:'1m2x2m',
-              price:1350000
-            },
-            {
-              title:'1m4x2m',
-              price:1450000
-            },
-            {
-              title:'1m6x2m',
-              price:1550000
-            },
-          ],
-          thanh_toan:[
-            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
-          ]
+          title:'',
+          danh_gia:5,
+          hinh_anh:[],
+          thong_tin_sp:[],
+          bang_gia_sp:[],
+          thanh_toan:[]
         }
       },
     }
   }
+  //
+  async componentWillReceiveProps(nextProps){
+    if(nextProps.p!==this.props.p){
+      let data_modal_selected=nextProps.data_modal_selected;
+      let selected_attributes={
+        img_url:data_modal_selected.sp.hinh_anh[0]!=undefined?data_modal_selected.sp.hinh_anh[0].img_url:'',
+        product_attributes:data_modal_selected.sp.hinh_anh[0]!=undefined?data_modal_selected.sp.hinh_anh[0].product_attributes:''
+      };
+      this.setState({
+        selected_attributes:selected_attributes,
+        data_modal_selected:data_modal_selected
+      })
+    }
+  }
+  // dat hang
+  action_dat_hang=()=>{
+    let {data_info}=this.state;
+    let list=[true,true,true,true];
+    let message=[];
+    let status =true;
+    if(data_info.name==""||data_info.name==" "||data_info.name.length<2) {
+      list[0]=false;
+      message.push(<span className='ms-z'>*HỌ VÀ TÊN bạn không được để trống.</span>);
+      status=false;
+    }
+    if(data_info.phone==""||!validate_phone(data_info.phone)) {
+      list[1]=false;
+      message.push(<span className='ms-z'>*SỐ ĐIỆN THOẠI không chính xác.</span>);
+      status=false;
+    }
+    if(data_info.address==""||data_info.address.length<8) {
+      list[2]=false;
+      message.push(<span className='ms-z'>*ĐỊA CHỈ bạn cần điền thêm thông tin để chúng tôi giao hàng dễ hơn </span>);
+      status=false;
+    }
+    if(!status){
+      this.setState({
+        validate_list:{
+          list:list,
+          message:message
+        }
+      })
+    }else{
+      // gui data here
+    }
+  }
+  // 
   render() {
-    let {data_modal_selected,selected_attributes,quantity}=this.state
+    let {data_modal_selected,selected_attributes,quantity,data_info,validate_list}=this.state
+    let check="";
+    
     return (
       <React.Fragment>
         <Modal
@@ -107,30 +103,61 @@ export default class Modal_checkout extends Component {
           aria-labelledby="contained-modal-title-vcenter"
           centered
           className='wrapz'
+          onHide={()=>this.props.handleClose()}
         >
           <div className=''>
               <div className='header-modalz'>
                   <span className='titlez'>{data_modal_selected.sp.title}</span>
-                  <span className='devvn-popup-close'>X</span>
+                  <span className='devvn-popup-close' onClick={()=>this.props.handleClose()}>X</span>
+                  <span className='dong' onClick={()=>this.props.handleClose()}>Đóng</span>
               </div>
               <div className='row'>
                 <div className='col-xs-12 col-sm-12 col-lg-6'>
                   <div className='row'>
                     <div className='col-4'>
                       <div className='war'>
-                        <img src={selected_attributes.img_url} class="img-thumbnail"/>
+                        <img src={selected_attributes.img_url} className="img-thumbnail"/>
                         <div>
                           <p ><span style={{padding:"3px",fontSize: '13px'}}>Giá :</span><span className='prz'>{data_modal_selected.value_selected.price.format(0, 3, '.', ',')} đ</span></p>
                         </div>
-                        <div class="devvn_prod_variable"> 
-                          <div class="quantity" > 
-                          <span class="syx">-</span>
-                          <span id="quantity-one" style={{fontSize: '14px', padding: '1px 5px'}}>1</span> <span class="syx" >+</span> </div> 
+                        <div className="devvn_prod_variable"> 
+                          <div className="quantity" > 
+                          <span className="syx"
+                            onClick={()=>this.setState({quantity:quantity-1>1?quantity-1:1})}
+                          >-</span>
+                          <span id="quantity-one" style={{fontSize: '14px', padding: '1px 5px'}}>{quantity}</span> <span className="syx" 
+                            onClick={()=>this.setState({quantity:quantity+1})}
+                          >+</span> </div> 
                         </div>
                       </div>
 
                     </div>
                     <div className='col-8'>
+                      <div className='wabz'>
+                         <p>*Lựa chọn mẫu và màu sắc: </p>
+                         <div>
+                         {
+                             data_modal_selected.sp.hinh_anh.map((item,i)=>{
+                                if(check.search(item.id+',')<0){
+                                  check+=item.id+',';
+                                  return <button className={`btnz ${selected_attributes.product_attributes==item.product_attributes?"z-active":""}`} key={i}
+                                    onClick={()=>{
+                                      let {selected_attributes}=this.state;
+                                      selected_attributes={
+                                        img_url:item.img_url,
+                                        product_attributes:item.product_attributes
+                                      }
+                                        this.setState({selected_attributes:selected_attributes})
+                                    }}
+                                  > 
+                                            {item.product_attributes}
+                                            <img className='selected-indicator ' src={iconz}/>
+                                          </button>
+                                }
+                             })
+                           }
+                         </div>
+                       </div>
                        <div className='wabz'>
                          <p>*Lựa chọn kích thước: </p>
                          <div>
@@ -141,7 +168,7 @@ export default class Modal_checkout extends Component {
                                 onClick={()=>{
                                   let {data_modal_selected}=this.state;
                                   data_modal_selected.value_selected=item
-                                    this.setState({data_modal_selected:data_modal_selected})
+                                    this.setState({data_modal_selected:data_modal_selected,quantity:1})
                                 }}
                                > 
                                         {item.title}
@@ -151,32 +178,10 @@ export default class Modal_checkout extends Component {
                            }
                          </div>
                        </div>
-                       <div className='wabz'>
-                         <p>*Lựa chọn mẫu và màu sắc: </p>
-                         <div>
-                         {
-                             data_modal_selected.sp.hinh_anh.map((item,i)=>{
 
-                               return <button className={`btnz ${selected_attributes.product_attributes==item.product_attributes?"z-active":""}`} key={i}
-                                onClick={()=>{
-                                  let {selected_attributes}=this.state;
-                                  selected_attributes={
-                                    img_url:item.img_url,
-                                    product_attributes:item.product_attributes
-                                  }
-                                    this.setState({selected_attributes:selected_attributes})
-                                }}
-                               > 
-                                        {item.product_attributes}
-                                        <img className='selected-indicator ' src={iconz}/>
-                                      </button>
-                             })
-                           }
-                         </div>
-                       </div>
                     </div>
                     <div style={{margin:'15px 0px 10px 9px'}}>
-                      <span>Tổng cộng:</span> <span style={{fontWeight:'600',color:'#d50000'}} >1.650.000 đ</span>
+                      <span>Tổng cộng:</span> <span style={{fontWeight:'600',color:'#d50000'}} >{(quantity*data_modal_selected.value_selected.price).format(0, 3, '.', ',')} đ</span>
                     </div>
                   </div>
                 </div>
@@ -185,43 +190,81 @@ export default class Modal_checkout extends Component {
                       <div className='wapz'>
                         <div className='popup-customer-info-title'>Thông tin người mua</div>
                         <div className='wapzz'>
-                          <div class="popup-customer-info-group"> 
-                            <div class="popup-customer-info-item-2"> 
-                              <input id="ten" type="text" class="inp" placeholder="Họ và tên(bắt buộc)"/> 
+                          <div className="popup-customer-info-group"> 
+                            <div className="popup-customer-info-item-2"> 
+                              <input type="text" className={`inp ${validate_list.list[0]?'':'wr'}`} placeholder="Họ và tên(bắt buộc)"
+                                ref={this.myRef1}
+                                onFocus={()=>this.myRef1.current.scrollIntoView()}
+                                value={data_info.name}
+                                onChange={(e)=>{
+                                  data_info.name=e.target.value;
+                                  this.setState({data_info:data_info})
+                                }}
+                              /> 
                             </div> 
-                            <div class="popup-customer-info-item-2"> 
-                              <input id="sdt" type="tel" class="inp" placeholder="Số điện thoại(bắt buộc)"/> 
+                            <div className="popup-customer-info-item-2"> 
+                              <input type="number"  className={`inp ${validate_list.list[1]?'':'wr'}`} placeholder="Số điện thoại(bắt buộc)"
+                                onFocus={()=>this.myRef1.current.scrollIntoView()}
+                                value={data_info.phone}
+                                onChange={(e)=>{
+                                  data_info.phone=e.target.value;
+                                  this.setState({data_info:data_info})
+                                }}
+                              /> 
                             </div> 
                           </div>
                         </div>
                         <div className='wapzz'>
-                          <div class="popup-customer-info-group"> 
-                            <div class="popup-customer-info-item-1"> 
-                              <textarea id="dia_chi" class="inp" placeholder="Địa chỉ(bắt buộc)" style={{ height: '72px', minHeight: 'inherit'}}></textarea> 
+                          <div className="popup-customer-info-group"> 
+                            <div className="popup-customer-info-item-1"> 
+                              <textarea  className={`inp ${validate_list.list[2]?'':'wr'}`} 
+                               placeholder="Địa chỉ"
+                                style={{ height: '72px', minHeight: 'inherit'}}
+                                ref={this.myRef2}
+                                onFocus={()=>this.myRef2.current.scrollIntoView()}
+                                value={data_info.address}
+                                onChange={(e)=>{
+                                  data_info.address=e.target.value;
+                                  this.setState({data_info:data_info})
+                                }}
+                                
+                              ></textarea> 
                               </div>
                           </div>
                         </div>
                         <div className='wapzz'>
-                          <div class="popup-customer-info-group"> 
-                            <div class="popup-customer-info-item-1"> 
-                              <textarea id="dia_chi" class="inp" placeholder="Ghi chú đơn hàng" style={{ height: '72px', minHeight: 'inherit'}}></textarea> 
+                          <div className="popup-customer-info-group"> 
+                            <div className="popup-customer-info-item-1"> 
+                              <textarea className="inp" placeholder="Ghi chú đơn hàng" style={{ height: '72px', minHeight: 'inherit'}}
+                                ref={this.myRef3}
+                                onFocus={()=>this.myRef3.current.scrollIntoView()}
+                                value={data_info.note}
+                                onChange={(e)=>{
+                                  data_info.note=e.target.value;
+                                  this.setState({data_info:data_info})
+                                }}
+                              ></textarea> 
                               </div>
                           </div>
                         </div>
                         <div className='wapzz'>
-                          <div class="popup-customer-info-group"> 
-                            <div class="popup-customer-info-item-1"> 
-                              <button  type="button" class="devvn-order-btn">Đặt hàng ngay</button>
+                          {validate_list.message}
+                        </div>
+                        <div className='wapzz'>
+                          <div className="popup-customer-info-group"> 
+                            <div className="popup-customer-info-item-1"> 
+                              <button  type="button" className="devvn-order-btn"
+                                onClick={()=>this.action_dat_hang()}
+                              >Đặt hàng ngay</button>
                             </div>
                           </div>
                         </div>
-                      {/*  */}
-                      {/*  */}
                       </div>
                   </div>
                 </div>
               </div>
           </div>
+          <div className='viewz'></div>
         </Modal>
       </React.Fragment>
     );
