@@ -11,7 +11,7 @@ export default class HeaderZ extends Component {
     return (
       <React.Fragment>
               <div className='cfir'>
-                    Chào mừng bạn đến với Nội Thất An Bình
+                   {this.props.header_title}
               </div>
               <div className='container'>
                   <div className='row'>
@@ -21,7 +21,7 @@ export default class HeaderZ extends Component {
                             </span>
                       </div>
                       <div className='col-8 col-sm-8 centerz'>
-                            <img src='https://anbinhnew.com/wp-content/themes/flatsome-child/assets/img/anbinhnew.png' width={'200px'}/>
+                            <img src={this.props.logo_url} width={'200px'}/>
                       </div>
                       <div className='col-2 col-sm-2'>
                             <span className='menuz'>

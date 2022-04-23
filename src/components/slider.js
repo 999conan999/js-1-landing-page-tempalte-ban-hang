@@ -20,7 +20,7 @@ class Sliderz extends Component {
     if(items!=undefined){
       let rs=[];
       items.forEach((e,i) => {
-        let title=e.title;let show_ma_sp='';
+        let title=e;let show_ma_sp='';
         //
         let show_mess='';
         if(title!=undefined&&title.id!=undefined){

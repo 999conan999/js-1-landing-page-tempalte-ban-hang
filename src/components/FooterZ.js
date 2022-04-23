@@ -10,7 +10,7 @@ export default class FooterZ extends Component {
     return (
       <React.Fragment>
               <div className='cfir' style={{marginTop:'100px'}}>
-                  Design by anbinhnew.com
+                  {this.props.footer_title}
               </div>
       </React.Fragment>
     );

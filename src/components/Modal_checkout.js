@@ -9,9 +9,96 @@ export default class Modal_checkout extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      selected_attributes:{
+        img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
+        product_attributes:'Giường sắt màu xanh dương'
+      },
+      quantity:1,
+      data_modal_selected:{
+          value_selected:{
+              title:'1mx2m',
+              price:1250000
+          },
+          sp:{
+          title:'Giường x sắt giá rẻ 8 tấc, 80cm, 1m, 1m2, 1m4, 1m6 1m8 x dài 2m',
+          danh_gia:4.5,
+          hinh_anh:[
+            {
+                  img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-gia-re-mau-xanh.jpg",
+                  id:"GA01",
+                  price_from:1300000,
+                  price_to:0,
+                  message:'',
+                  product_attributes:'Giường sắt màu xanh dương'
+            },
+            {
+                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-hop-cao-cap-don-gian.jpg",
+                id:"GB01",
+                price_from:0,
+                price_to:0,
+                message:'Giá tùy theo kích thước',
+                product_attributes:'Giường sắt màu hồng'
+            },
+            {
+                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/giuong-sat-hoang-gia-hcm-noi-that-an-binh-1-720x720.jpg",
+                id:"HG01",
+                price_from:0,
+                price_to:3500000,
+                message:'Miễn phí vận chuyển',
+                product_attributes:'Giường sắt màu trắng-xanh dương'
+            },
+            {
+                img_url:"https://anbinhnew.com/wp-content/uploads/2021/01/Giuong-sat-don-1m2-mau-ngang-2.jpg",
+                id:"GC01",
+                price_from:2300000,
+                price_to:3500000,
+                message:'Giá tùy theo kích thước',
+                product_attributes:'Giường sắt màu nâu'
+            },
+          ],
+          thong_tin_sp:[
+            {
+              title:'xxxGiá Giường sắt giá rẻ',
+              des:'+x Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
+            },
+            {
+              title:'xChất liệu',
+              des:'+xcx Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
+            },
+            {
+              title:'Kích thước hỗ trợ',
+              des:'🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).'
+            },
+          ],
+          bang_gia_sp:[
+            {
+              title:'1mx2m',
+              price:1250000
+            },
+            {
+              title:'1m2x2m',
+              price:1350000
+            },
+            {
+              title:'1m4x2m',
+              price:1450000
+            },
+            {
+              title:'1m6x2m',
+              price:1550000
+            },
+          ],
+          thanh_toan:[
+            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
+            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
+            '🔔🔔🔔 + Sắt hộp ( chịu lực nặng 600kg) + Sơn tĩnh điện (chống rỉ sét).',
+          ]
+        }
+      },
     }
   }
   render() {
+    let {data_modal_selected,selected_attributes,quantity}=this.state
     return (
       <React.Fragment>
         <Modal
@@ -23,7 +110,7 @@ export default class Modal_checkout extends Component {
         >
           <div className=''>
               <div className='header-modalz'>
-                  <span className='titlez'>Tủ sắt có gương 2 cánh giá rẻ [sơn dầu]</span>
+                  <span className='titlez'>{data_modal_selected.sp.title}</span>
                   <span className='devvn-popup-close'>X</span>
               </div>
               <div className='row'>
@@ -31,9 +118,9 @@ export default class Modal_checkout extends Component {
                   <div className='row'>
                     <div className='col-4'>
                       <div className='war'>
-                        <img src="https://anbinhnew.com/wp-content/uploads/2021/01/Ban-hoc-doi-bang-nhua-cho-be-trai-va-gai-1.jpg" class="img-thumbnail"/>
+                        <img src={selected_attributes.img_url} class="img-thumbnail"/>
                         <div>
-                          <p ><span style={{padding:"3px",fontSize: '13px'}}>Giá :</span><span className='prz'>1.650.000 đ</span></p>
+                          <p ><span style={{padding:"3px",fontSize: '13px'}}>Giá :</span><span className='prz'>{data_modal_selected.value_selected.price.format(0, 3, '.', ',')} đ</span></p>
                         </div>
                         <div class="devvn_prod_variable"> 
                           <div class="quantity" > 
@@ -47,41 +134,44 @@ export default class Modal_checkout extends Component {
                        <div className='wabz'>
                          <p>*Lựa chọn kích thước: </p>
                          <div>
-                           <button className='btnz'> 
-                              1mx2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              1m2x2m
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                       
+                           {
+                             data_modal_selected.sp.bang_gia_sp.map((item,i)=>{
+
+                               return <button className={`btnz  ${item.title==data_modal_selected.value_selected.title?'z-active':''}`} key={i}
+                                onClick={()=>{
+                                  let {data_modal_selected}=this.state;
+                                  data_modal_selected.value_selected=item
+                                    this.setState({data_modal_selected:data_modal_selected})
+                                }}
+                               > 
+                                        {item.title}
+                                        <img className='selected-indicator ' src={iconz}/>
+                                      </button>
+                             })
+                           }
                          </div>
                        </div>
                        <div className='wabz'>
                          <p>*Lựa chọn mẫu và màu sắc: </p>
                          <div>
-                           <button className='btnz'> 
-                              Màu vàng
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              màu trắng xanh
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              Màu gỗ đậm
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                             Màu Gỗ nhạt
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-                           <button className='btnz'> 
-                              Màu kem
-                              <img className='selected-indicator' src={iconz}/>
-                           </button>
-            
+                         {
+                             data_modal_selected.sp.hinh_anh.map((item,i)=>{
+
+                               return <button className={`btnz ${selected_attributes.product_attributes==item.product_attributes?"z-active":""}`} key={i}
+                                onClick={()=>{
+                                  let {selected_attributes}=this.state;
+                                  selected_attributes={
+                                    img_url:item.img_url,
+                                    product_attributes:item.product_attributes
+                                  }
+                                    this.setState({selected_attributes:selected_attributes})
+                                }}
+                               > 
+                                        {item.product_attributes}
+                                        <img className='selected-indicator ' src={iconz}/>
+                                      </button>
+                             })
+                           }
                          </div>
                        </div>
                     </div>
