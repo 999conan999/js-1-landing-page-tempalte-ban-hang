@@ -23,7 +23,24 @@ class App extends Component {
     this.state = {
          show_checkout:false,
          show_modal_status:false,
+         step:false,
          p:0,
+         data:{
+          sp:{
+            name:'',
+            attributes_kt:'',
+            price:0,
+            attributes_ms:'',
+            url_img:'',
+            quantity:0,
+          },
+          user:{
+            z_name:'',
+            z_phone:'',
+            z_address:'',
+            z_note:''
+          }
+        },
          data_modal_selected:{
               value_selected:{
                    title:'',
@@ -44,7 +61,7 @@ class App extends Component {
 
   }
   render() {
-          let {show_checkout,show_modal_status,data_modal_selected,p}=this.state;
+          let {show_checkout,show_modal_status,data_modal_selected,p,step}=this.state;
           // console.log("🚀 ~ file: App.js ~ line 48 ~ App ~ render ~ data_modal_selected", data_modal_selected)
           let data=window.data;
     return (
@@ -152,11 +169,19 @@ class App extends Component {
                     handleClose={()=>this.setState({show_checkout:false})}
                     p={p}
                     data_modal_selected={data_modal_selected}
-
+                    action_step_1_to_server={()=>this.setState({show_modal_status:true,show_checkout:false,step:false})}
+                    action_step_2_to_server={(data)=>{
+                         this.setState({
+                              step:true,
+                              data:data
+                         })
+                    }}
                />
                <Modal_status
                     onHide={()=>this.setState({show_modal_status:false})}
                     show={show_modal_status}
+                    step={step}
+                    data={this.state.data}
                />
                
       </React.Fragment>
@@ -229,11 +254,13 @@ class App extends Component {
                                                             <td className='td-z1 f-2'>
                                                             <strong>{item.title}</strong>
                                                             </td>
-                                                            <td className='td-z2 f-7'>
+                                                            <td className='td-z2 f-7 fss'>
                                                             {item.price.format(0, 3, '.', ',')} đ
                                                             </td>
                                                             <td className='td-z2 f-1'>
-                                                            <button  className="btn btn-danger" onClick={()=>{
+                                                            <button  className="btn btn-primary" 
+                                                            style={{backgroundColor:"#ff9826"}}
+                                                            onClick={()=>{
                                                                  let {p} =this.state;
                                                                  this.setState({
                                                                  show_checkout:true,

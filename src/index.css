@@ -194,8 +194,12 @@
 }
 .td-z2{
   height: 21px;
-  /* width: 80.1344%; */
   padding: 5px;
+
+}
+.fss{
+  color: #2196f3;
+  font-weight: 500;
 }
 .f-2{
  width: 20%;
@@ -489,4 +493,51 @@
 }
 .dong:hover{
   background-color: #202124;
+}
+.icon-checkz{
+  position: absolute;
+  top: -21px;
+  left: 44%;
+  display: unset;
+  background-color: white;
+  border-radius: 50px;
+  border: 2px solid #33a938;
+}
+.w-icon{
+  height: 24px;
+  position: relative;
+  background-color: #33a938;
+}
+.tabz td,.tabz th {
+  padding: 7px;
+  border: 1px solid #ccc;
+  text-align: left;
+  font-size: 16px;
+}
+.showzs{
+  margin-top: 18px;
+}
+.showzs p{
+  font-size: 14px;
+  text-align: left;
+  margin-bottom: 8px;
+  color: currentColor;
+  margin-top: 6px;
+}
+.bnt-home{
+  margin: auto;
+  width: 154px;
+  padding: 7px;
+  border: 1px solid green;
+  border-radius: 10px;
+  font-size: 22px;
+  font-weight: 700;
+  color: green;
+  text-align: center;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+.bnt-home:hover{
+  background-color: green;
+  color: white;
 }

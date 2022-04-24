@@ -59,8 +59,8 @@ export default class Modal_checkout extends Component {
     }
   }
   // dat hang
-  action_dat_hang=()=>{
-    let {data_info}=this.state;
+  action_dat_hang=async()=>{
+    let {data_info,data_modal_selected,selected_attributes,quantity}=this.state;
     let list=[true,true,true,true];
     let message=[];
     let status =true;
@@ -88,6 +88,28 @@ export default class Modal_checkout extends Component {
       })
     }else{
       // gui data here
+      let data={
+        sp:{
+          name:data_modal_selected.sp.title,
+          attributes_kt:data_modal_selected.value_selected.title,
+          price:data_modal_selected.value_selected.price,
+          attributes_ms:selected_attributes.product_attributes,
+          url_img:selected_attributes.img_url,
+          quantity:quantity,
+        },
+        user:{
+          z_name:data_info.name,
+          z_phone:data_info.phone,
+          z_address:data_info.address,
+          z_note:data_info.note
+        }
+      }
+      this.props.action_step_1_to_server()
+      // senddata to sercer here
+     await setTimeout(()=>{
+        this.props.action_step_2_to_server(data)
+        console.log("🚀 ~ file: Modal_checkout.js ~ line 111 ~ Modal_checkout ~ awaitsetTimeout ~ data", data)
+      },3000)      
     }
   }
   // 
