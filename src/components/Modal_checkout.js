@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import {validate_phone} from '../lib/fs'
-import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form'
-import InputGroup from 'react-bootstrap/InputGroup';
 import iconz  from './iconz.svg';
-
+import {_order} from './axios'
 export default class Modal_checkout extends Component {
   constructor (props) {
     super(props)
@@ -96,20 +93,26 @@ export default class Modal_checkout extends Component {
           attributes_ms:selected_attributes.product_attributes,
           url_img:selected_attributes.img_url,
           quantity:quantity,
+          z_note:data_info.note
         },
         user:{
           z_name:data_info.name,
           z_phone:data_info.phone,
           z_address:data_info.address,
-          z_note:data_info.note
         }
       }
       this.props.action_step_1_to_server()
       // senddata to sercer here
-     await setTimeout(()=>{
-        this.props.action_step_2_to_server(data)
-        console.log("🚀 ~ file: Modal_checkout.js ~ line 111 ~ Modal_checkout ~ awaitsetTimeout ~ data", data)
-      },3000)      
+      let a=await _order(data);
+      if(a){
+        this.props.action_step_2_to_server(data);
+      }else{
+        alert("Đặt hàng không thành công!")
+      }
+    //  await setTimeout(()=>{
+    //     this.props.action_step_2_to_server(data)
+    //     console.log("🚀 ~ file: Modal_checkout.js ~ line 111 ~ Modal_checkout ~ awaitsetTimeout ~ data", data)
+    //   },3000)      
     }
   }
   // 

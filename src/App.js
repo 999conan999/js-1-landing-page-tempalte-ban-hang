@@ -9,7 +9,6 @@ import FooterZ from './components/FooterZ';
 import facebook from './lib/facebook.png'
 import zalo from './lib/zalo.png'
 import call from './lib/call.png'
- 
 Number.prototype.format = function(n, x, s, c) {
 var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
      num = this.toFixed(Math.max(0, ~~n));
@@ -63,7 +62,6 @@ class App extends Component {
   }
   render() {
           let {show_checkout,show_modal_status,data_modal_selected,p,step,is_xem_them}=this.state;
-          // console.log("🚀 ~ file: App.js ~ line 48 ~ App ~ render ~ data_modal_selected", data_modal_selected)
           let data=window.data;
     return (
       <React.Fragment>

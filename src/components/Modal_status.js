@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import { get_icon } from '../lib/fs';
-import Button from 'react-bootstrap/Button'
+
 export default class Modal_status extends Component {
   constructor (props) {
     super(props)
@@ -65,7 +65,7 @@ export default class Modal_status extends Component {
                 <p>Tên: <b>{data.user.z_name}</b></p>
                 <p>Địa chỉ: <b>{data.user.z_address}</b></p>
                 <p>Điện thoại: <b>{data.user.z_phone}</b></p>
-                <p>Ghi chú: <b> {data.user.z_note}</b></p>
+                <p>Ghi chú: <b> {data.sp.z_note}</b></p>
               </div>
               <div class="footer-pp"> 
                 <p class="bnt-home" onClick={()=>this.props.onHide()}>Đóng</p>
