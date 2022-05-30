@@ -21,6 +21,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
+         is_xem_them:false,
          show_checkout:false,
          show_modal_status:false,
          step:false,
@@ -61,7 +62,7 @@ class App extends Component {
 
   }
   render() {
-          let {show_checkout,show_modal_status,data_modal_selected,p,step}=this.state;
+          let {show_checkout,show_modal_status,data_modal_selected,p,step,is_xem_them}=this.state;
           // console.log("🚀 ~ file: App.js ~ line 48 ~ App ~ render ~ data_modal_selected", data_modal_selected)
           let data=window.data;
     return (
@@ -110,9 +111,11 @@ class App extends Component {
                                         </div>
                                        <div>
                                              {data.narbar.des_show}
-                                             <span className='xxo'>Xem thêm</span> 
+                                             {!is_xem_them&&<span className='xxo'
+                                                  onClick={()=>this.setState({is_xem_them:true})}
+                                             >Xem thêm</span> }
                                              <br/>
-                                             {false&&<span style={{fontSize:"14px"}}>{data.narbar.des_hiden}<br/></span>}
+                                             {<span style={{fontSize:"14px",display:is_xem_them?"block":"none"}}>{data.narbar.des_hiden}<br/></span>}
                                              <span style={{color:"blue"}}>*Nhận giao hàng toàn quốc.</span>
                                        </div>
                                        <div>

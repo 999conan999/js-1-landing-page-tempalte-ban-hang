@@ -70,7 +70,9 @@ class Sliderz extends Component {
     if(img_list!=undefined){
       if(img_list.length<5) slidesToShow=img_list.length; 
     }
-
+    const settings={
+      lazyLoad: true,
+    }
     return (
       <React.Fragment>  
           <div className='slider-z'>
@@ -79,6 +81,7 @@ class Sliderz extends Component {
             ref={slider => (this.slider1 = slider)}
             arrows={false}
             infinite={false}
+            {...settings}
           >
             {this.show_img_large(img_list)}
         </Slider>
@@ -92,6 +95,7 @@ class Sliderz extends Component {
             focusOnSelect={true}
             variableWidth={true}
             infinite={false}
+            {...settings}
           >
             {this.show_img_small(img_list)}
           </Slider>
