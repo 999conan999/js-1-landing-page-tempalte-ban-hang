@@ -93,7 +93,9 @@ export default class Modal_checkout extends Component {
           attributes_ms:selected_attributes.product_attributes,
           url_img:selected_attributes.img_url,
           quantity:quantity,
-          z_note:data_info.note
+          z_note:data_info.note,
+          url_sp:window.location.href,
+          // ma_sp:
         },
         user:{
           z_name:data_info.name,
