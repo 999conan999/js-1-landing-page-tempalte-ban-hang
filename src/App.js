@@ -287,7 +287,7 @@ class App extends Component {
                                              return  <p key={i}>{item}</p>
                                         })}
                                    <div>
-                                        <span className='thong-tin'>Thông tin về chúng tôi 👉 <a href="#thong-tin">Nội thất An bình</a></span>
+                                        <span className='thong-tin'>Thông tin về chúng tôi 👉 <a href="#thong-tin">{window.data.comom.ten_thuong_hieu}</a></span>
                                    </div>
                               </Accordion.Body>
                          </Accordion.Item>}
