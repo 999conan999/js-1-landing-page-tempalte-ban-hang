@@ -50,13 +50,13 @@ export default class Modal_status extends Component {
                         </td>
                         <td data-column="Giá" style={{color: '#333',fontSize: '14px',backgroundColor: 'white'}}>{data.sp.price}</td>
                         <td data-column="Số lượng" style={{color: '#333',fontSize: '14px',backgroundColor: 'white'}}>{data.sp.quantity}</td>
-                        <td data-column="Thành tiền" style={{color: '#333',fontSize: '14px',backgroundColor: 'white'}}>{(data.sp.quantity*data.sp.price).format(0, 3, '.', ',')} đ</td>
+                        <td data-column="Thành tiền" style={{color: '#333',fontSize: '14px',backgroundColor: 'white'}}>{(Number(data.sp.quantity)*Number(data.sp.price)).format(0, 3, '.', ',')} đ</td>
                       </tr>
                       <tr> 
                         <td></td>
                         <td></td>
                         <td style={{fontWeight: '600',fontSize: '14px'}}>Tổng tiền: </td> 
-                        <td style={{fontWeight: '600', color: 'blue',fontSize: '14px',}}>{(data.sp.quantity*data.sp.price).format(0, 3, '.', ',')} đ</td>
+                        <td style={{fontWeight: '600', color: 'blue',fontSize: '14px',}}>{(Number(data.sp.quantity)*Number(data.sp.price)).format(0, 3, '.', ',')} đ</td>
                       </tr> 
                     </tbody>
               </table>

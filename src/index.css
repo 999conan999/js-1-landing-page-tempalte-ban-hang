@@ -541,3 +541,23 @@
   background-color: green;
   color: white;
 }
+.content strong{
+  margin-right:4px;
+}
+.content p{
+  line-height: 26px;
+}
+.content h1, .content h2, .content h3,.content h4{
+  font-size: 1.25rem;
+  font-weight: 500;
+  line-height: 2rem;
+  letter-spacing: 0.0125em;
+  color: var(--q-color-primary)!important;
+}
+.content a{
+  color: var(--q-color-primary)!important;
+  font-weight: 500;
+}
+.content a:hover{
+  text-decoration: underline
+}

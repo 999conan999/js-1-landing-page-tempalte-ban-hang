@@ -15,7 +15,7 @@ var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
 
 return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
 };
- 
+const colorz=['#1598496b','#f50c0c59','#7d24c159','#0619c54d','#3fb9b9a8','#8bc34aed','#2196f387','#3f51b56b','#ddcf558c','#1598496b','#f50c0c59','#7d24c159','#0619c54d','#3fb9b9a8','#8bc34aed','#2196f387','#3f51b56b','#ddcf558c','#1598496b','#f50c0c59','#7d24c159','#0619c54d','#3fb9b9a8','#8bc34aed','#2196f387','#3f51b56b','#ddcf558c']
 class App extends Component {
   constructor (props) {
     super(props)
@@ -132,7 +132,7 @@ class App extends Component {
                                         </p>}
                                         {data.narbar.nguoi_dai_dien!=''&&<p className='textz'><strong>Người đại diện:</strong> {data.narbar.nguoi_dai_dien}
                                         </p>}
-                                        {data.narbar.stk!=''&&<p className='textz'><strong>Số tài khoản ngân hàng:</strong>{data.narbar.stk}
+                                        {data.narbar.stk!=''&&<p className='textz'><strong>Số tài khoản ngân hàng: </strong> {data.narbar.stk}
                                         </p>}
                                         <div>
                                               <p className='textz'><strong>Liên hệ:</strong></p>
@@ -194,7 +194,7 @@ class App extends Component {
      sp.forEach((e,i) => {
           rs.push(
           <div className='col-12 col-sm-6 col-md-12 col-lg-6' key={i}>
-               <div className='wrap-card card-1' style={{backgroundColor: 'rgb(151 199 237)'}}>
+               <div className='wrap-card card-1' style={{backgroundColor: colorz[i]}}>
                     <div className="tieu-de">
                          <h2 className='title-1'>
                               {e.title}
@@ -256,7 +256,7 @@ class App extends Component {
                                                             <strong>{item.title}</strong>
                                                             </td>
                                                             <td className='td-z2 f-7 fss'>
-                                                            {item.price.format(0, 3, '.', ',')} đ
+                                                            {Number(item.price).format(0, 3, '.', ',')} đ
                                                             </td>
                                                             <td className='td-z2 f-1'>
                                                             <button  className="btn btn-primary" 

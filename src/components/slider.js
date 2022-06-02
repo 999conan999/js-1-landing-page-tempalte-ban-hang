@@ -28,9 +28,9 @@ class Sliderz extends Component {
           if(title.price_from==0&&title.price_to==0&&title.message==""){
           }else{
             show_mess=<div className='messz'>
-              {title.price_from>0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá từ <span style={{fontWeight:'600',color:'#ede614',}}>{title.price_from.format(0, 3, '.', ',')} đ</span> đến <span style={{fontWeight:'600',color:'#ede614',}}>{title.price_to.format(0, 3, '.', ',')} đ</span></p>}
-              {title.price_from>0&&title.price_to==0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{title.price_from.format(0, 3, '.', ',')} đ</span></p>}
-              {title.price_from==0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{title.price_to.format(0, 3, '.', ',')} đ</span></p>}
+              {title.price_from>0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá từ <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_from).format(0, 3, '.', ',')} đ</span> đến <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_to).format(0, 3, '.', ',')} đ</span></p>}
+              {title.price_from>0&&title.price_to==0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_from).format(0, 3, '.', ',')} đ</span></p>}
+              {title.price_from==0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_to).format(0, 3, '.', ',')} đ</span></p>}
               {title.message!=''&&<p style={{textAlign:'center',color:'#fdfdfd',fontSize: '12px',marginBottom:'0px',height:'21px'}}>*{title.message}</p>}
             </div>
           }
