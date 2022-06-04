@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-bootstrap/Modal'
 import {validate_phone} from '../lib/fs'
-import {_order} from './axios'
+import {_order,_telegram} from './axios'
 const iconz=<svg  className='selected-indicator '  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
 <g fill="none" fill-rule="evenodd">
   <g>
@@ -129,6 +129,7 @@ export default class Modal_checkout extends Component {
       // senddata to sercer here
       let a=await _order(data);
       if(a){
+        _telegram(data);
         this.props.action_step_2_to_server(data);
       }else{
         alert("Đặt hàng không thành công!")
