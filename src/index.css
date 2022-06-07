@@ -561,3 +561,6 @@
 .content a:hover{
   text-decoration: underline
 }
+.lazy-load-image-background {
+  width: 100% !important;
+}

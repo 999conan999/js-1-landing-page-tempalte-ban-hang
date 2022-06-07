@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 class Sliderz extends Component {
   constructor (props) {
     super(props)
@@ -39,7 +40,12 @@ class Sliderz extends Component {
         rs.push(
           <div className='handle'>
             <a>
-              <img src={e.img_url} width={'100%'}/>
+              {/* <img src={e.img_url} width={'100%'}/> */}
+              <LazyLoadImage
+                    effect="blur"
+                    src={e.img_url} 
+                    width={'100%'}     
+              />
             </a>
             {show_mess}
             <div className='ma-sp'>{show_ma_sp}</div>
@@ -56,7 +62,12 @@ class Sliderz extends Component {
       items.forEach((e,i) => {
         rs.push(
           <div className='handle-1'>
-            <img src={e.img_url} width={'63px'}/>
+            {/* <img src={e.img_url} width={'63px'}/> */}
+            <LazyLoadImage
+                    effect="blur"
+                    src={e.img_url} 
+                    width={'63px'}    
+            />
           </div>
         )
       });
