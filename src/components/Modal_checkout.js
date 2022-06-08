@@ -28,9 +28,9 @@ const iconz=<svg  className='selected-indicator '  xmlns="http://www.w3.org/2000
 export default class Modal_checkout extends Component {
   constructor (props) {
     super(props)
-    this.myRef1 = React.createRef();
-    this.myRef2 = React.createRef();
-    this.myRef3 = React.createRef();
+    // this.myRef1 = React.createRef();
+    // this.myRef2 = React.createRef();
+    // this.myRef3 = React.createRef();
     this.state = {
       validate_list:{
         list:[true,true,true,true],
@@ -243,8 +243,8 @@ export default class Modal_checkout extends Component {
                           <div className="popup-customer-info-group"> 
                             <div className="popup-customer-info-item-2"> 
                               <input type="text" className={`inp ${validate_list.list[0]?'':'wr'}`} placeholder="Họ và tên(bắt buộc)"
-                                ref={this.myRef1}
-                                onFocus={()=>this.myRef1.current.scrollIntoView()}
+                                // ref={this.myRef1}
+                                // onFocus={()=>this.myRef1.current.scrollIntoView()}
                                 value={data_info.name}
                                 onChange={(e)=>{
                                   data_info.name=e.target.value;
@@ -254,7 +254,7 @@ export default class Modal_checkout extends Component {
                             </div> 
                             <div className="popup-customer-info-item-2"> 
                               <input type="number"  className={`inp ${validate_list.list[1]?'':'wr'}`} placeholder="Số điện thoại(bắt buộc)"
-                                onFocus={()=>this.myRef1.current.scrollIntoView()}
+                                // onFocus={()=>this.myRef1.current.scrollIntoView()}
                                 value={data_info.phone}
                                 onChange={(e)=>{
                                   data_info.phone=e.target.value;
@@ -270,8 +270,8 @@ export default class Modal_checkout extends Component {
                               <textarea  className={`inp ${validate_list.list[2]?'':'wr'}`} 
                                placeholder="Địa chỉ"
                                 style={{ height: '72px', minHeight: 'inherit'}}
-                                ref={this.myRef2}
-                                onFocus={()=>this.myRef2.current.scrollIntoView()}
+                                // ref={this.myRef2}
+                                // onFocus={()=>this.myRef2.current.scrollIntoView()}
                                 value={data_info.address}
                                 onChange={(e)=>{
                                   data_info.address=e.target.value;
@@ -286,8 +286,8 @@ export default class Modal_checkout extends Component {
                           <div className="popup-customer-info-group"> 
                             <div className="popup-customer-info-item-1"> 
                               <textarea className="inp" placeholder="Ghi chú đơn hàng" style={{ height: '72px', minHeight: 'inherit'}}
-                                ref={this.myRef3}
-                                onFocus={()=>this.myRef3.current.scrollIntoView()}
+                                // ref={this.myRef3}
+                                // onFocus={()=>this.myRef3.current.scrollIntoView()}
                                 value={data_info.note}
                                 onChange={(e)=>{
                                   data_info.note=e.target.value;
