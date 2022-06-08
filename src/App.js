@@ -181,6 +181,7 @@ class App extends Component {
                                                             srcset={data.narbar.pic_map}
                                                             src={hoder}
                                                             className="imgz img-top"
+                                                            width="100%"
                                                        />}
                                                   </a>
                                              </div>
@@ -278,13 +279,13 @@ class App extends Component {
                                              <tbody>
                                                    {e.bang_gia_sp.map((item,i)=>{
                                                        return  <tr className='tr-z1' key={i}>
-                                                            <td className='td-z1 f-2'>
+                                                            <td className='td-z1'>
                                                             <strong>{item.title}</strong>
                                                             </td>
-                                                            <td className='td-z2 f-7 fss'>
+                                                            <td className='td-z2 fss'>
                                                             {Number(item.price).format(0, 3, '.', ',')} đ
                                                             </td>
-                                                            <td className='td-z2 f-1'>
+                                                            <td className='td-z2'>
                                                             <button  className="btn btn-primary" 
                                                             style={{backgroundColor:"#ff9826"}}
                                                             onClick={()=>{

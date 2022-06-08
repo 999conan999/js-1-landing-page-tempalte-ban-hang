@@ -16,7 +16,9 @@ class Sliderz extends Component {
       nav1: this.slider1,
       nav2: this.slider2
     })
-    this.widthz=this.container.offsetWidth
+    try{
+     this.widthz=this.container.offsetWidth
+    }catch(e){}
   }
   //
   show_img_large=(items)=>{
