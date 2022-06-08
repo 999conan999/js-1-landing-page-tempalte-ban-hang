@@ -314,7 +314,7 @@ export default class Modal_checkout extends Component {
                 </div>
               </div>
           </div>
-          <div className='viewz'></div>
+          {/* <div className='viewz'></div> */}
         </Modal>
       </React.Fragment>
     );
