@@ -9,7 +9,8 @@ import FooterZ from './components/FooterZ';
 import facebook from './lib/facebook.png'
 import zalo from './lib/zalo.png'
 import call from './lib/call.png'
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyImage from "./components/lazy-image";
+import hoder from './components/placeHolder.jpg'
 Number.prototype.format = function(n, x, s, c) {
 var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
      num = this.toFixed(Math.max(0, ~~n));
@@ -58,9 +59,8 @@ class App extends Component {
          },
     }
   }
-  componentDidMount(){
-
-  }
+//   componentDidMount(){
+//   }
   render() {
           let {show_checkout,show_modal_status,data_modal_selected,p,step,is_xem_them}=this.state;
           let data=window.data;
@@ -94,28 +94,31 @@ class App extends Component {
                          <div className='wrap-tt container'>
                               <div className='row sh'>
                                    <div className='col-12 col-sm-12 picz'>
-                                        {/* <img src={data.narbar.url_1} className="imgz img-top"/> */}
-                                        <LazyLoadImage
-                                             effect="blur"
-                                             src={data.narbar.url_1} 
-                                             className="imgz img-top"     
-                                        />
+                                        {/* <img src={data.narbar.url_1} className="imgz img-top" /> */}
+                                        {data.narbar.url_1!=''&&<LazyImage
+                                             srcset={data.narbar.url_1}
+                                             src={hoder}
+                                             className="imgz img-top"
+                                             width="100%"
+                                        />}
                                    </div>
                                    <div className='col-12 col-sm-6 picz'>
                                         {/* <img src={data.narbar.url_2} className="imgz"/> */}
-                                        <LazyLoadImage
-                                             effect="blur"
-                                             src={data.narbar.url_2} 
-                                             className="imgz"     
-                                        />
+                                        {data.narbar.url_2!=''&&<LazyImage
+                                             srcset={data.narbar.url_2}
+                                             src={hoder}
+                                             className="imgz"
+                                             width="100%"
+                                        />}
                                    </div>
                                    <div className='col-12 col-sm-6 picz'>
                                         {/* <img src={data.narbar.url_3} className="imgz"/> */}
-                                        <LazyLoadImage
-                                             effect="blur"
-                                             src={data.narbar.url_3} 
-                                             className="imgz"     
-                                        />
+                                        {data.narbar.url_3!=''&&<LazyImage
+                                             srcset={data.narbar.url_3}
+                                             src={hoder}
+                                             className="imgz"
+                                             width="100%"
+                                        />}
                                    </div>
                               </div>
                               <div className='container'>
@@ -154,29 +157,17 @@ class App extends Component {
                                               <p className='textz'><strong>Liên hệ:</strong></p>
                                              <div style={{textAlign: 'center'}}>
                                                   {data.comom.lien_he_zalo!=''&&<a href={data.comom.lien_he_zalo} target="_blank" className='icon-contact'>
-                                                       {/* <img src={zalo} /> */}
-                                                       <LazyLoadImage
-                                                            effect="blur"
-                                                            src={zalo} 
-                                                       />
+                                                       <img src={zalo} />
                                                        <br/>
                                                        Zalo
                                                   </a>}
                                                   {data.comom.lien_he_facebook!=''&&<a href={data.comom.lien_he_facebook}  target="_blank" className='icon-contact'>
-                                                       {/* <img src={facebook} /> */}
-                                                       <LazyLoadImage
-                                                            effect="blur"
-                                                            src={facebook} 
-                                                       />
+                                                       <img src={facebook} />
                                                        <br/>
                                                        Facebook 
                                                   </a>}
                                                   {data.comom.lien_he_dien_thoai!=''&&<a href={`tel:${data.comom.lien_he_dien_thoai}`} className='icon-contact' style={{width:"92px"}} target="_blank">
-                                                       {/* <img src={call} /> */}
-                                                       <LazyLoadImage
-                                                            effect="blur"
-                                                            src={call} 
-                                                       />
+                                                       <img src={call} />
                                                        Điện thoại
                                                   </a>}
                                              </div>
@@ -185,12 +176,12 @@ class App extends Component {
                                              <p className='textz'><strong>Google map:</strong></p>
                                              <div className="mapz">
                                                   <a href={data.narbar.google_map}  target="_blank">
-                                                       {/* <img src={data.narbar.pic_map} class="imgz img-top"/> */}
-                                                       <LazyLoadImage
-                                                            effect="blur"
-                                                            src={data.narbar.pic_map} 
-                                                            className="imgz img-top"  
-                                                       />
+                                                       {/* <img src={data.narbar.pic_map} className="imgz img-top"/> */}
+                                                       {data.narbar.pic_map!=''&&<LazyImage
+                                                            srcset={data.narbar.pic_map}
+                                                            src={hoder}
+                                                            className="imgz img-top"
+                                                       />}
                                                   </a>
                                              </div>
                                         </div>}
@@ -240,7 +231,7 @@ class App extends Component {
                          {get_star(e.danh_gia)}
                          <span className={`ribbon ${get_random_css()}`}>Mẫu số {i+1}</span>
                     </div>
-                    <Sliderz items={e.hinh_anh}/>
+                    <Sliderz items={e.hinh_anh} />
                     <div className='xem-sp'>
                          <p className='wrz'>
                               <a className="button1" href={comom.lien_he_zalo} target="_blank">

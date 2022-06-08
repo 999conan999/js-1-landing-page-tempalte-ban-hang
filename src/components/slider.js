@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from "react-slick";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
+import LazyImage from "./lazy-image";
+import hoder from './placeHolder.jpg'
 class Sliderz extends Component {
   constructor (props) {
     super(props)
@@ -15,6 +16,7 @@ class Sliderz extends Component {
       nav1: this.slider1,
       nav2: this.slider2
     })
+    this.widthz=this.container.offsetWidth
   }
   //
   show_img_large=(items)=>{
@@ -38,13 +40,14 @@ class Sliderz extends Component {
         }
         //
         rs.push(
-          <div className='handle'>
+          <div className='handle'  key={i}  ref={el => (this.container = el)}>
             <a>
               {/* <img src={e.img_url} width={'100%'}/> */}
-              <LazyLoadImage
-                    effect="blur"
-                    src={e.img_url} 
-                    width={'100%'}     
+              <LazyImage
+                srcset={e.img_url}
+                src={hoder}
+                width="100%"
+                height={this.widthz}
               />
             </a>
             {show_mess}
@@ -61,13 +64,15 @@ class Sliderz extends Component {
       let rs=[];
       items.forEach((e,i) => {
         rs.push(
-          <div className='handle-1'>
+          <div className='handle-1' key={i}>
             {/* <img src={e.img_url} width={'63px'}/> */}
-            <LazyLoadImage
-                    effect="blur"
-                    src={e.img_url} 
-                    width={'63px'}    
-            />
+            <LazyImage
+                srcset={e.img_url}
+                src={hoder}
+                width="63"
+                height="63"
+              />
+
           </div>
         )
       });
@@ -82,7 +87,7 @@ class Sliderz extends Component {
       if(img_list.length<5) slidesToShow=img_list.length; 
     }
     const settings={
-      lazyLoad: true,
+      lazyLoad: false,
     }
     return (
       <React.Fragment>  
@@ -117,4 +122,4 @@ class Sliderz extends Component {
   }
 }
 
-export default Sliderz;
+export default (Sliderz);
