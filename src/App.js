@@ -64,6 +64,12 @@ class App extends Component {
   render() {
           let {show_checkout,show_modal_status,data_modal_selected,p,step,is_xem_them}=this.state;
           let data=window.data;
+          if(data.mr!=undefined){
+               if(data.mr.fb.replace(" ","")!="") data.comom.lien_he_facebook=data.mr.fb;
+               if(data.mr.zl.replace(" ","")!="") data.comom.lien_he_zalo=data.mr.zl;
+               if(data.mr.dt.replace(" ","")!="") data.comom.lien_he_dien_thoai=data.mr.dt;
+               if(data.mr.ds.replace(" ","")!="") data.comom.footer_title=data.mr.ds;
+          }
     return (
       <React.Fragment>
                <HeaderZ 
