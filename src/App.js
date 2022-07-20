@@ -58,9 +58,46 @@ class App extends Component {
              }
          },
     }
+    
+    let sp=window.data.sp;
+    let vc_1=window.data.narbar.vc_1===undefined?0:window.data.narbar.vc_1;
+    if(sp!==undefined && !window.lock){
+         let new_sp= sp.map((item_sp,i)=>{
+          let vc_2=item_sp.vc_2==undefined?0:item_sp.vc_2;
+          let add_vc=vc_1+vc_2;
+          let new_sp_item={
+               title:item_sp.title,
+               danh_gia:item_sp.danh_gia,
+               thong_tin_sp:item_sp.thong_tin_sp,
+               thanh_toan:item_sp.thanh_toan,
+               hinh_anh:item_sp.hinh_anh,
+          }
+          let bang_gia_sp=[]
+          if(item_sp.bang_gia_sp!=undefined){
+               item_sp.bang_gia_sp.forEach(e => {
+                    bang_gia_sp.push({
+                         title: e.title,
+                         price:Number(e.price)+add_vc
+                    })
+               });
+          }
+          new_sp_item.bang_gia_sp=bang_gia_sp;
+          try{
+               new_sp_item.price_from=bang_gia_sp[0].price;
+               new_sp_item.price_to=bang_gia_sp[bang_gia_sp.length-1].price;
+          }catch(e){
+               new_sp_item.price_from=0;
+               new_sp_item.price_to=0;
+          }
+
+          return new_sp_item;
+          })
+          window.data.sp=new_sp;
+     window.lock=true;          
+    }
+
   }
-//   componentDidMount(){
-//   }
+
   render() {
           let {show_checkout,show_modal_status,data_modal_selected,p,step,is_xem_them}=this.state;
           let data=window.data;
@@ -238,7 +275,11 @@ class App extends Component {
                          {get_star(e.danh_gia)}
                          <span className={`ribbon ${get_random_css()}`}>Mẫu số {i+1}</span>
                     </div>
-                    <Sliderz items={e.hinh_anh} />
+                    <Sliderz
+                     items={e.hinh_anh} 
+                     price_from={e.price_from}
+                     price_to={e.price_to}
+                    />
                     <div className='xem-sp'>
                          <p className='wrz'>
                               <a className="button1" href={comom.lien_he_zalo} target="_blank">

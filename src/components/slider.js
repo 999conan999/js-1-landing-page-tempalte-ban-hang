@@ -21,7 +21,7 @@ class Sliderz extends Component {
     }catch(e){}
   }
   //
-  show_img_large=(items)=>{
+  show_img_large=(items,price_from,price_to)=>{
     if(items!=undefined){
       let rs=[];
       items.forEach((e,i) => {
@@ -30,12 +30,12 @@ class Sliderz extends Component {
         let show_mess='';
         if(title!=undefined&&title.id!=undefined){
           show_ma_sp=`Mã sản phẩm: ${title.id}`;
-          if(title.price_from==0&&title.price_to==0&&title.message==""){
+          if(price_from==0&&price_to==0&&title.message==""){
           }else{
             show_mess=<div className='messz'>
-              {title.price_from>0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá từ <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_from).format(0, 3, '.', ',')} đ</span> đến <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_to).format(0, 3, '.', ',')} đ</span></p>}
-              {title.price_from>0&&title.price_to==0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_from).format(0, 3, '.', ',')} đ</span></p>}
-              {title.price_from==0&&title.price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(title.price_to).format(0, 3, '.', ',')} đ</span></p>}
+              {price_from>0&&price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá từ <span style={{fontWeight:'600',color:'#ede614',}}>{Number(price_from).format(0, 3, '.', ',')} đ</span> đến <span style={{fontWeight:'600',color:'#ede614',}}>{Number(price_to).format(0, 3, '.', ',')} đ</span></p>}
+              {price_from>0&&price_to==0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(price_from).format(0, 3, '.', ',')} đ</span></p>}
+              {price_from==0&&price_to>0&&<p style={{textAlign:'center',fontSize:'14px',color:'#fdfdfd',marginBottom:'0px'}}>Giá <span style={{fontWeight:'600',color:'#ede614',}}>{Number(price_to).format(0, 3, '.', ',')} đ</span></p>}
               {title.message!=''&&<p style={{textAlign:'center',color:'#fdfdfd',fontSize: '12px',marginBottom:'0px',height:'21px'}}>*{title.message}</p>}
             </div>
           }
@@ -84,6 +84,7 @@ class Sliderz extends Component {
   //
   render() {
     let img_list=this.props.items;//[todo]
+    let {price_from,price_to}=this.props;
     let slidesToShow=5;
     if(img_list!=undefined){
       if(img_list.length<5) slidesToShow=img_list.length; 
@@ -101,7 +102,7 @@ class Sliderz extends Component {
             infinite={false}
             {...settings}
           >
-            {this.show_img_large(img_list)}
+            {this.show_img_large(img_list,price_from,price_to)}
         </Slider>
         {/*  */}
         <div className='wrap-img-small'>
